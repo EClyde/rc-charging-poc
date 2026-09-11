@@ -1,0 +1,57 @@
+\documentclass[twocolumn]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{Capacitor Charging}
+\author{Clyde Fernandez}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document introduces the charging behaviour of a resistor-capacitor (RC) network and derives the capacitor voltage at one time constant.    
+\end{abstract}
+
+\section{Introduction}
+This document introduces the charging behavior of a resistor-capacitor (RC) network. When a capacitor C is charged through a series R from a constant supply $V_0$, the voltage of the capacitor increases according to the condition.
+\begin{equation}
+\label{one}
+    V(t) = V_0 \left(1-e^{-t/RC}\right),
+\end{equation}
+where the product RC has units of seconds and is called the time constant $\tau = RC$.
+
+\section{Voltage at the Time Constant}
+Substituting $t = \tau$ into (1):
+
+\begin{align}
+V(\tau) &= V_0\left(1-e^{-\tau/RC}\right) \notag \\
+        &= V_0\left(1-e^{-RC/RC}\right) && \text{since } \tau = RC \notag \\
+        &= V_0\left(1-e^{-1}\right) \label{eq:vtau} \\
+        &\approx V_0(1-0.368) \notag \\
+        &\approx 0.632\,V_0. \notag
+\end{align}
+
+\noindent The exponent cancelling to $-1$ in (2) is why the $0.632$ fraction is
+universal --     $R$ and $C$ dropped out of the calculation before the final
+line, so this fraction holds for any $RC$ network. Substituting
+$V_0 = 5.0\,\mathrm{V}$:
+\begin{equation}
+\label{three}
+  V(\tau) \approx 0.632 \times 5.0\,\mathrm{V} \approx 3.16\,\mathrm{V},
+\end{equation} 
+matching the dashed line in Figure 1.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]
+{rc_charging.pdf}
+\caption{Charging curve for
+$R=10\,\text{k}\Omega$, $C=22\,\text{pF}$.}
+\label{fig:rc}
+\end{figure}
+
+
+
+\end{document}
